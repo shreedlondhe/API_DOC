@@ -1,2 +1,114 @@
-1)
-2)
+Q1)Test cases for authentication API
+ans:
++ve Verify successful authentication with valid credentials.
+    Verify the response contains a valid token upon successful authentication.
+    Verify the token expiration time is returned in the response.
+    Verify the API allows access to protected resources with a valid token.
+-ve Verify authentication fails with invalid credentials.
+    Verify authentication fails with missing username or password.
+    Verify authentication fails with an expired token.
+    Verify authentication fails with a malformed or invalid token.
+    Verify the API returns an error for requests without an authentication token.
+
+Q2)Test Cases for API Security Testing
+ans: API security testing is the process of evaluating an API to ensure it is secure from vulnerabilities, threats, and unauthorized access. It focuses on identifying and mitigating security risks in the API's implementation and usage. The goal is to protect sensitive data, prevent unauthorized access, and ensure the API behaves as expected under various conditions.
++ve Verify the API enforces HTTPS for secure communication.
+    Verify the API accepts valid authentication tokens.
+    Verify the API encrypts sensitive data in transit.
+-ve Verify the API rejects requests over HTTP.
+    Verify the API denies access with invalid or expired tokens.
+    Verify the API prevents SQL injection attacks by rejecting malicious payloads.
+    Verify the API blocks requests with malformed JSON or XML.
+    Verify the API limits the number of requests to prevent brute force attacks.
+    Verify the API does not expose sensitive information in error messages.
+
+Q3)API testing types
+ans: Functional Testing,Integration Testing,Performance Testing:,Security Testing,Validation Testing.Error Handling Testing,Regression Testing.
+
+Q4)How do you handle dynamic values in API responses (e.g., tokens, timestamps)?
+ans:
+    Extract dynamic values using scripting or programming languages(store as staic global variables).
+    Store dynamic values in variables (postman- env variables)for reuse in subsequent requests.
+
+Q5)What is the purpose of headers in API requests, and can you give examples of commonly used headers?
+ans: Headers in API requests provide additional information about the request or response, such as content type, authentication details, and caching instructions. Commonly used headers include:
+    Content-Type: Specifies the media type of the resource (e.g., application/json).
+    Authorization: Contains credentials for authenticating the client (e.g., Bearer token).
+    Accept: Indicates the media types that the client can process (e.g., application/xml).
+    User-Agent: Identifies the client software making the request.
+    Cache-Control: Directs caching behavior (e.g., no-cache, max-age).
+Q6)How do you test the security of an API (e.g., testing for SQL injection, XSS, or token validation)?
+ans:
+Q7)How do you perform performance testing for APIs, and what tools do you use (e.g., JMeter, LoadRunner)?
+ans:
+    Identify performance requirements and key metrics (e.g., response time, throughput).
+    Create test scenarios that simulate real-world usage patterns.
+    Use tools like JMeter or LoadRunner to generate load on the API.
+    Monitor system performance during the test (CPU, memory, network).
+    Analyze results to identify bottlenecks and areas for improvement.
+
+Q8)What is the difference between synchronous and asynchronous APIs, and how do you test them?
+ans:
+
+
+Q9)How would you test an API that has no documentation available?
+Q10)How do you test an API that interacts with third-party services?
+Q11)What would you do if an API returns inconsistent responses during testing?
+Q12)How do you test APIs for rate limiting and throttling?
+Q13)How do you ensure backward compatibility when testing APIs after an update?
+
+Q14)Can you describe a challenging API testing scenario you faced and how you resolved it?
+Q15)How do you prioritize API test cases in a large project?
+Q16)How do you collaborate with developers to debug API issues?
+Q17)How do you ensure the quality of APIs in an Agile environment?
+Q18)How do you handle API testing when the backend is still under development?
+
+
+
+
+
+Q9)How do you handle versioning in APIs, and why is it important?
+Q10)What is the difference between REST and SOAP APIs, and how does that impact your testing approach?
+Q11)How do you test for rate limiting in APIs, and what strategies do you use to handle it?
+Q12)How do you ensure that your API tests are maintainable and reusable?
+Q13)What is the role of API documentation in testing, and how do you ensure that your tests align with the documentation?
+Q14)How do you test for data integrity in APIs, especially when dealing with CRUD operations?
+Q15)How do you handle dependencies between different API endpoints in your tests?
+Q16)What are some common challenges you face when testing APIs, and how do you overcome them?
+Q17)How do you test for localization and internationalization in APIs?
+Q18)How do you test for backward compatibility in APIs when new versions are released?
+Q19)How do you test for error handling in APIs, and what are some common error scenarios you look for?
+Q20)How do you integrate API testing into your overall software development lifecycle (SDLC)?
+Q21)What is the difference between a 4xx and 5xx HTTP status code, and how do you test for them?
+Q22)How do you test for pagination in APIs, and what are some common scenarios you consider?
+Q23)How do you test for filtering and sorting in APIs, and what are some common scenarios you consider?
+Q24)How do you test for authentication and authorization in APIs, and what are some common scenarios you consider?
+Q25)How do you test for data validation in APIs, and what are some common scenarios you consider?
+Q26)How do you test for concurrency in APIs, and what are some common scenarios you consider?
+Q27)How do you test for caching in APIs, and what are some common scenarios you consider?
+Q28)How do you test for webhooks in APIs, and what are some common scenarios you consider?,
+Q29)How do you test for third-party integrations in APIs, and what are some common scenarios you consider?
+Q30)How do you test for API gateways and proxies, and what are some common scenarios you consider?
+Q31)How do you test for API versioning, and what are some common scenarios you consider?
+Q32)How do you test for API deprecation, and what are some common scenarios you consider?
+Q33)How do you test for API monitoring and logging, and what are some common scenarios you consider?
+Q34)How do you test for API scalability, and what are some common scenarios you consider?
+Q35)How do you test for API reliability, and what are some common scenarios you consider?
+Q36)How do you test for API usability, and what are some common scenarios you consider?
+Q37)How do you test for API accessibility, and what are some common scenarios you consider?
+Q38)How do you test for API compliance with industry standards and regulations, and what are some common scenarios you consider?
+Q39)How do you test for API documentation accuracy and completeness, and what are some common scenarios you consider?
+Q40)How do you test for API lifecycle management, and what are some common scenarios you consider?
+Q50)How do you test for API deployment and release management, and what are some common scenarios you consider?
+Q41)How do you test for API rollback and recovery, and what are some common scenarios you consider?
+Q42)How do you test for API change management, and what are some common scenarios you consider?
+Q43)How do you test for API incident management, and what are some common scenarios you consider?
+Q44)How do you test for API problem management, and what are some common scenarios you consider?
+Q45)How do you test for API configuration management, and what are some common scenarios you consider?
+Q46)How do you test for API asset management, and what are some common scenarios you consider?
+Q47)How do you test for API service level agreements (SLAs), and what are some common scenarios you consider?
+Q48)How do you test for API key management, and what are some common scenarios you consider?
+Q50)How do you test for API billing and monetization, and what are some common scenarios you consider?
+Q51)How do you test for API analytics and reporting, and what are some common scenarios you consider?
+
+
