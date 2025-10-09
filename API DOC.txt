@@ -69,7 +69,6 @@ ans: If there’s no documentation, I start by exploring and understanding the A
 Q10)How do you test an API that interacts with third-party services?
 ans:When an API interacts with third-party services, I first identify all external dependencies and understand how data flows between our system and the third party.
     For testing, I use mocking or stubbing tools (like Postman Mock Server, WireMock, or Mockito) to simulate the third-party responses so testing doesn’t rely on external systems.
-
     I verify:
     Request format (headers, payloads, authentication tokens)
     Response handling (success, failure, timeouts, invalid data)
@@ -109,10 +108,65 @@ ans: When an API is updated, I ensure backward compatibility by verifying that e
      Finally, I communicate with developers if breaking changes are necessary and ensure proper versioning and documentation are maintained.
 
 Q14)Can you describe a challenging API testing scenario you faced and how you resolved it?
+ans: In one project, I was testing a payment API that interacted with multiple third-party gateways. The challenge was that responses from the gateways were asynchronous and sometimes delayed, which made it difficult to validate transaction statuses in real time.
+    1️⃣ Challenge: Handling Dynamic Authentication Tokens
+    While testing a banking API, the authentication tokens expired every few minutes, causing most automated test cases to fail.
+    Solution: I implemented a pre-request script in Postman (and token refresh logic in Rest Assured) to automatically generate and store new tokens before each test run. This made the entire test suite stable and reusable in CI/CD.
+    3️⃣ Challenge: Dealing with Flaky Responses in Asynchronous APIs
+    While testing a report-generation API, the response wasn’t instant — results came after a few minutes.
+    Solution: I built a polling mechanism in my test scripts to check the report status every few seconds until it changed to “COMPLETED.” This ensured reliability and consistent testing even for delayed responses.
+    Challenge: Data Dependency Between APIs
+    4️⃣Some APIs required data from previous calls (like userID from registration API for login and transaction APIs).
+    Solution: I used chained requests in Postman and data-driven tests in Rest Assured, storing dynamic values from one response and reusing them in subsequent requests automatically.
+    5️⃣ Challenge: Validating Large JSON Responses
+    The account statement API returned huge JSON data with nested structures, making manual validation difficult.
+    Solution: I used JSON schema validation in Rest Assured to ensure the structure, data types, and mandatory fields were correct — saving time and increasing accuracy.
+    7️⃣ Challenge: Ensuring Backward Compatibility
+    After an API update, older clients started failing.
+    Solution: I maintained regression test suites for old versions and used contract testing (Pact) to automatically detect breaking changes between old and new API contracts.
+
 Q15)How do you prioritize API test cases in a large project?
+ans: In a large project, I prioritize API test cases based on business impact, critical functionality, and risk.
+Critical Business Flows First:
+APIs that handle login, payment, transactions, or core workflows are tested first.
+Example: In a banking project, fund transfer or account creation APIs have the highest priority.
+Frequency of Use:
+APIs used frequently by end users are tested next.
+Example: Statement fetch, balance inquiry APIs.
+Risk and Complexity:
+APIs prone to errors, having complex logic, or interacting with third-party services are given high priority.
+New Features vs Regression:
+Newly developed or updated APIs are tested immediately.
+Regression tests are prioritized based on impact on existing clients.
+Dependency and Integration:
+APIs that other services depend on are tested early to avoid cascading failures.
+Automation Potential:
+High-priority APIs that are stable and critical are automated first for faster regression in CI/CD pipelines.
+
 Q16)How do you collaborate with developers to debug API issues?
+ans: I collaborate with developers by maintaining open communication channels (like Slack, Teams) for quick discussions.
+    I provide detailed bug reports with steps to reproduce, request and response payloads, headers, and any relevant logs or screenshots.
+    I use API testing tools (Postman, Swagger) to share collections or environments that can help developers replicate the issue.
+    I participate in joint debugging sessions where we can analyze logs, monitor network traffic (using tools like Fiddler or Wireshark), and review code if necessary.
+    I also suggest potential causes based on my testing experience and work together to identify root causes and solutions.
+    Finally, I verify fixes by retesting the issues once developers have addressed them.
+
 Q17)How do you ensure the quality of APIs in an Agile environment?
+ans: In an Agile environment, I ensure the quality of APIs by integrating testing into the development process from the start.
+    I participate in sprint planning to understand requirements and define acceptance criteria for API features.
+    I create and maintain automated test suites (using Postman, Rest Assured) that can be run in CI/CD pipelines to provide quick feedback on code changes.
+    I perform exploratory testing alongside automated tests to uncover edge cases and unexpected behaviors.
+    I collaborate closely with developers and product owners to clarify requirements, discuss potential issues, and ensure alignment on quality goals.
+    I also review API documentation to ensure it is accurate and up-to-date, which helps both testers and developers.
+    Finally, I monitor API performance and error rates in production using tools like New Relic or Datadog to catch issues early.
+
 Q18)How do you handle API testing when the backend is still under development?
+ans: When the backend is still under development, I use mocking and stubbing techniques to simulate API responses.
+    I create mock servers using tools like Postman Mock Server, WireMock, or JSON Server to mimic the expected behavior of the API endpoints.
+    I define the request and response structures based on available documentation or discussions with developers.
+    I also use contract testing (with tools like Pact) to define and verify the expected interactions between services, ensuring that once the backend is ready, it adheres to the agreed-upon contracts.
+    Additionally, I focus on testing the frontend or client-side logic that interacts with the API, ensuring that it can handle various response scenarios (success, error, timeouts).
+    I maintain close communication with developers to stay updated on backend progress and adjust my tests accordingly as the API evolves.
 
 
 
