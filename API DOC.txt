@@ -49,13 +49,64 @@ ans:
 
 Q8)What is the difference between synchronous and asynchronous APIs, and how do you test them?
 ans:
-
+| **Aspect**          | **Synchronous API**                                                           | **Asynchronous API**                                                                                                                   |
+| ------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **Definition**      | Client sends a request and waits for the server to respond before continuing. | Client sends a request and continues without waiting for the response. The response arrives later (via callback, webhook, or polling). |
+| **Blocking Nature** | **Blocking** – the client is blocked until it gets a response.                | **Non-blocking** – the client can perform other tasks while waiting for the response.                                                  |
+| **Example**         | REST API call where client waits for a response (e.g., `GET /user/123`).      | Message queue or event-based APIs (e.g., Kafka, Webhooks, WebSockets).                                                                 |
+| **Use Case**        | When immediate response is needed (e.g., login, fetch data).                  | When processing takes time (e.g., video processing, report generation).                                                                |
+| **Response Time**   | Usually faster overall because it’s direct.                                   | Response might come after some delay, depending on processing.                                                                         |
 
 Q9)How would you test an API that has no documentation available?
+ans: If there’s no documentation, I start by exploring and understanding the API.
+     First, I check available resources like codebase, Swagger files, or frontend network calls (using browser DevTools) to identify the endpoints, request methods, and parameters.
+     Then, I use tools like Postman or cURL to send test requests and observe responses — this helps me understand input requirements, response structure, and error codes.
+
+     I perform exploratory testing by trying different inputs (valid, invalid, missing fields) to identify validations and hidden business rules.
+     I also look for patterns in the responses to infer data formats and relationships.
+     Finally, I document my findings to create a reference for future testing and share it with the team.
+
 Q10)How do you test an API that interacts with third-party services?
+ans:When an API interacts with third-party services, I first identify all external dependencies and understand how data flows between our system and the third party.
+    For testing, I use mocking or stubbing tools (like Postman Mock Server, WireMock, or Mockito) to simulate the third-party responses so testing doesn’t rely on external systems.
+
+    I verify:
+    Request format (headers, payloads, authentication tokens)
+    Response handling (success, failure, timeouts, invalid data)
+    Error and retry logic (e.g., 500 errors, network failures)
+    Security aspects (API keys, OAuth tokens)
+    In integration environments, I also run end-to-end tests with the real third-party service to ensure compatibility and data accuracy.
+    Finally, I monitor logs and response times to validate performance and stability under real conditions.
+
 Q11)What would you do if an API returns inconsistent responses during testing?
+ans:
+    First, I would document the inconsistencies, noting the specific requests and responses.
+    Then, I would analyze the patterns to see if inconsistencies are tied to specific parameters, headers, or conditions (e.g., time of day, user roles).
+    I would also check for any rate limiting or throttling that might affect responses.
+    Next, I would communicate with the development team to investigate potential issues in the API implementation or backend services.
+    If possible, I would set up logging or monitoring to capture more detailed information about the requests and responses.
+    Finally, I would rerun tests after any fixes or changes to ensure the inconsistencies are resolved.
+
 Q12)How do you test APIs for rate limiting and throttling?
+ans:To test rate limiting and throttling, I first identify the allowed request limit (e.g., 100 requests/min). Then I use tools like JMeter, Postman Runner, or scripts to send multiple requests in a short time.
+    I check how the API behaves when the limit is reached:
+    It should return the correct status code (e.g., 429 – Too Many Requests)
+    The response should include details like Retry-After headers
+    It should not crash or become unstable
+    I also test the reset behavior — after the limit window passes, new requests should be accepted again.
+    In addition, I verify throttling ensures fair usage and doesn’t affect normal users.
+
+
 Q13)How do you ensure backward compatibility when testing APIs after an update?
+ans: When an API is updated, I ensure backward compatibility by verifying that existing clients and integrations continue to work without any changes.
+
+     I do this by:
+     Running regression tests using the old API test suite on the new version.
+     Comparing old and new responses — checking that the structure, data types, and status codes haven’t changed unexpectedly.
+     Ensuring deprecated fields or endpoints still function as expected or return proper warnings.
+     Testing different API versions (v1, v2) side by side to confirm they coexist properly.
+     Validating contract tests using tools like Postman, Pact, or Swagger Diff to detect any schema breaking changes.
+     Finally, I communicate with developers if breaking changes are necessary and ensure proper versioning and documentation are maintained.
 
 Q14)Can you describe a challenging API testing scenario you faced and how you resolved it?
 Q15)How do you prioritize API test cases in a large project?
