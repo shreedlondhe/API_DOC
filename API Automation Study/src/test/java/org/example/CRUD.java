@@ -53,7 +53,7 @@ void postRequest(){
 //          <artifactId>jackson-databind</artifactId>
 //          <version>2.17.1</version>
 //          </dependency>
-  Response response = given()
+  Response response = given() // stored response
           //  .contentType("application/json")
           .header("Content-Type", "application/json")
           .body(requestBody)
