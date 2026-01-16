@@ -41,7 +41,6 @@ public class Assertions {
     }
  void testFinalRemote(){
         System.out.println("xyz");
-
     }
 }
 
