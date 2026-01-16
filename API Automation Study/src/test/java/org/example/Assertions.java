@@ -39,7 +39,9 @@ public class Assertions {
 
 
     }
-
+ void testFinal2(){
+        System.out.println("xyz");
+    }
 }
 
 
