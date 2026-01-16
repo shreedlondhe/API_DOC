@@ -39,7 +39,7 @@ public class Assertions {
 
 
     }
- void testFinal2(){
+ void testFinal(){
         System.out.println("xyz");
     }
 }
