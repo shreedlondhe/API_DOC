@@ -35,7 +35,8 @@ public class Assertions {
                 .log().all();
         validatableResponse.body("[0].name",equalTo("Google Pixel 6 Pro"));
         validatableResponse.body("[0].id",equalTo("1"));
-        validatableResponse.header("Content-Type","application/json");
+        validatableResponse.header("Content-Type","application/json;charset=UTF-8");
+
 
 
     }
