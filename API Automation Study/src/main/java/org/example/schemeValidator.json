@@ -1,0 +1,9 @@
+{
+"type": "object",
+"required": ["color", "capacity"],
+"additionalProperties": false,
+"properties": {
+"color": { "type": "string" },
+"capacity": { "type": "string" }
+}
+}
