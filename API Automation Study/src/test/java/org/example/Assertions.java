@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class Assertions {
 @Test
-    void AssertionUsing_Responce(){
+    void AssertionUsing_Response(){
     Response response = given()
             .when()
             .get("https://api.restful-api.dev/objects")
@@ -36,6 +36,7 @@ public class Assertions {
         validatableResponse.body("[0].name",equalTo("Google Pixel 6 Pro"));
         validatableResponse.body("[0].id",equalTo("1"));
         validatableResponse.header("Content-Type","application/json;charset=UTF-8");
+
 
 
 
