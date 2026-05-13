@@ -1,0 +1,493 @@
+API interview questions
+
+Basic JSON Questions
+1. What is JSON?
+
+JSON is a lightweight data format used for storing and exchanging data between applications, especially in APIs.
+
+2. What does JSON stand for?
+
+JSON stands for JavaScript Object Notation.
+
+3. What are the supported data types in JSON?
+
+JSON supports:
+
+String
+Number
+Boolean
+Object
+Array
+Null
+4. What is the difference between JSON and XML?
+JSON	XML
+Lightweight	Heavy
+Easy to read	More complex
+Faster parsing	Slower
+Uses key-value pairs	Uses tags
+5. What is the difference between JSON and JavaScript object?
+
+JSON is a text format used for data exchange, while a JavaScript object is an in-memory object used in JavaScript programs.
+
+6. Is JSON case-sensitive?
+
+Yes, JSON keys and values are case-sensitive.
+
+7. Can JSON support comments?
+
+No, JSON does not support comments.
+
+8. What is the difference between null and empty string in JSON?
+null means no value
+"" means value exists but empty
+9. What are key-value pairs in JSON?
+
+JSON stores data as key-value pairs.
+
+Example:
+
+{
+  "name": "Shrinivas"
+}
+10. Can a JSON file have duplicate keys?
+
+Technically possible, but not recommended. Most parsers take the last value.
+
+Structure-Based Questions
+11. What is a nested JSON object?
+
+A JSON object inside another JSON object is called nested JSON.
+
+12. What is a JSON array?
+
+A collection of values stored inside square brackets [].
+
+13. Difference between JSON object and JSON array?
+Object → uses {}
+Array → uses []
+14. How do you access nested JSON values?
+
+Using keys.
+
+Example:
+
+{
+  "employee": {
+    "name": "Shrinivas"
+  }
+}
+
+Access:
+
+employee.name
+15. How do you handle dynamic values in JSON response?
+
+Store values in variables and validate dynamically using JSONPath or assertions.
+
+16. How to parse JSON in Java?
+
+Using libraries like:
+
+Jackson
+Gson
+17. How to convert JSON string to object?
+
+Using deserialization.
+
+Example:
+
+ObjectMapper.readValue()
+18. How to convert object to JSON string?
+
+Using serialization.
+
+Example:
+
+ObjectMapper.writeValueAsString()
+19. What is serialization and deserialization in JSON?
+Serialization → Object to JSON
+Deserialization → JSON to Object
+20. What is pretty print JSON?
+
+Formatted JSON with indentation for readability.
+
+API Testing Related JSON Questions
+21. How do you validate JSON response in API automation?
+
+I validate:
+
+Status code
+Response body
+Keys
+Values
+Schema
+22. How do you extract value from JSON response using Rest Assured?
+
+Using jsonPath().
+
+Example:
+
+response.jsonPath().getString("token");
+23. How do you verify status code and JSON body together?
+
+Using assertions in same test.
+
+Example:
+
+response.then().statusCode(200).body("name", equalTo("Shrinivas"));
+24. What is JSONPath?
+
+JSONPath is used to navigate and extract values from JSON.
+
+25. Difference between JSONPath and XPath?
+JSONPath	XPath
+For JSON	For XML
+Simple syntax	More complex
+26. How do you validate nested arrays in JSON response?
+
+Using index-based JSONPath.
+
+Example:
+
+skills[0]
+27. How do you handle large JSON responses?
+Validate only required fields
+Use schema validation
+Use POJO mapping
+28. What is schema validation in JSON?
+
+Validating response structure against predefined schema.
+
+29. What is JSON schema?
+
+JSON schema defines:
+
+Field names
+Data types
+Required fields
+30. How do you validate mandatory fields in JSON?
+
+Check key existence and non-null value.
+
+Java + Automation Framework Questions
+31. How do you create POJO class from JSON?
+
+Using:
+
+Manual class creation
+Online tools
+Jackson annotations
+32. What is Jackson library?
+
+Jackson
+ is a Java library used for parsing and mapping JSON.
+
+33. What is Gson library?
+
+Gson
+ is a Java library by Google for JSON conversion.
+
+34. Difference between Jackson and Gson?
+Jackson	Gson
+Faster	Simpler
+More features	Lightweight
+35. How do you map JSON response to POJO class?
+
+Using ObjectMapper.
+
+36. What is ObjectMapper in Jackson?
+
+It converts JSON ↔ Java object.
+
+37. How do you read JSON from external file in framework?
+
+Using FileReader or Java NIO.
+
+38. How do you pass JSON payload in POST request?
+
+Pass JSON string in request body.
+
+39. How do you modify JSON dynamically in tests?
+
+Update keys using JSONObject before sending request.
+
+40. How do you compare two JSON responses?
+
+Using:
+
+Key comparison
+Deep equality
+JSONAssert library
+Scenario-Based Interview Questions
+41. API response contains 500 fields — how will you validate?
+
+I validate only business-critical fields, schema, and mandatory values instead of all 500 fields.
+
+42. If one key is missing in JSON response, how will you handle?
+
+Fail the test and log missing key details.
+
+43. How do you validate array size in response?
+
+Using:
+
+response.jsonPath().getList("users").size();
+44. If response structure changes frequently, how will you design framework?
+
+Use:
+
+Dynamic parsing
+Reusable utilities
+Schema versioning
+Flexible POJO mapping
+45. How do you validate specific user details from response?
+
+Extract user by ID and compare expected fields.
+
+46. How do you handle optional fields in JSON?
+
+Check if field exists before validation.
+
+47. What if JSON response has null values?
+
+Validate whether null is expected. If mandatory field is null, fail test.
+
+48. How do you extract token from login response JSON?
+
+Example:
+
+String token = response.jsonPath().getString("token");
+49. How do you send nested JSON payload in POST API?
+
+Create nested object and pass as request body.
+
+50. How do you validate response against expected JSON file?
+
+Read expected JSON from file and compare actual response using JSONAssert.
+
+
+
+
+Advanced JSON Interview Questions (5+ Years Experience)
+JSON + API Design
+1. How do you validate complex nested JSON responses in your framework?
+
+I use JSONPath for targeted field extraction, schema validation for structure, and POJO mapping for complex objects.
+
+2. How do you handle deeply nested JSON arrays?
+
+By using indexed JSONPath expressions and loops to validate array elements dynamically.
+
+3. How do you validate dynamic keys in JSON response?
+
+I first extract all keys, then validate expected patterns or values using iteration.
+
+4. How do you compare two large JSON payloads?
+
+Using libraries like JSONAssert or Jackson tree comparison.
+
+5. What challenges have you faced while validating JSON in real projects?
+Dynamic values
+Optional fields
+Changing schema
+Large payload size
+Nested arrays
+Rest Assured + JSON
+6. How do you extract nested values using Rest Assured?
+
+Using jsonPath().getString("employee.skills[0]").
+
+7. How do you validate multiple JSON fields in one assertion?
+
+Use chained body validations.
+
+8. How do you validate response schema in Rest Assured?
+
+Using matchesJsonSchemaInClasspath().
+
+9. How do you deserialize response to Java object?
+
+Using Jackson ObjectMapper.
+
+10. How do you serialize Java object into JSON payload?
+
+Convert POJO object to JSON string using ObjectMapper.
+
+Java JSON Framework Questions
+11. What is POJO mapping?
+
+Mapping JSON fields to Java class properties.
+
+12. Why POJO instead of direct JSON parsing?
+
+POJO improves readability, maintainability, and reusability.
+
+13. What is ObjectMapper?
+
+Jackson ObjectMapper docs
+
+A class used to convert JSON to Java objects and vice versa.
+
+14. How do you handle unknown fields in JSON?
+
+Use annotations like @JsonIgnoreProperties(ignoreUnknown = true).
+
+15. How do you ignore null fields in JSON serialization?
+
+Use Jackson annotations/configuration.
+
+Real-Time Scenario Questions
+16. Response has changing IDs every execution. How do you validate?
+
+Ignore dynamic fields and validate static fields only.
+
+17. How do you validate timestamps in JSON?
+
+Check format and compare with expected pattern.
+
+18. How do you validate API response when values are random?
+
+Use type validation, pattern matching, and business rule checks.
+
+19. How do you validate array of objects?
+
+Loop through array and validate each object.
+
+20. How do you validate response when order changes?
+
+Use unordered comparison or sort before validation.
+
+Framework Design Questions
+21. How do you store JSON payloads in framework?
+
+In external .json files under resources folder.
+
+22. Why externalize JSON payload?
+
+To improve maintainability and data-driven testing.
+
+23. How do you modify payload before request?
+
+Read JSON file, update fields dynamically, send request.
+
+24. How do you handle reusable payload templates?
+
+Create base JSON files and update runtime values.
+
+25. How do you manage large JSON files in automation?
+
+Use utility classes and POJO mapping.
+
+JSONPath Advanced
+26. What is JSONPath?
+
+A query language for JSON.
+
+27. How do you extract list using JSONPath?
+
+Use:
+
+getList("users.name")
+28. How do you extract nested object using JSONPath?
+
+Use dot notation.
+
+29. How do you validate array count?
+
+Use .size().
+
+30. Can JSONPath filter records?
+
+Yes, using conditions.
+
+Practical Interview Scenarios
+31. How do you validate response against database?
+
+Compare API JSON response with DB query results.
+
+32. How do you validate only specific fields?
+
+Extract only business-critical fields.
+
+33. How do you validate response if schema changes frequently?
+
+Use flexible validators + optional checks.
+
+34. What if response contains optional keys?
+
+Check existence before assertion.
+
+35. What if response key is null?
+
+Validate based on business expectation.
+
+Common Tricky Questions
+36. Can JSON have methods?
+
+No, JSON contains only data.
+
+37. Can JSON contain date type?
+
+No native date type; stored as string.
+
+38. Can JSON contain duplicate keys?
+
+Avoid it; parser behavior may vary.
+
+39. Can JSON array contain mixed data types?
+
+Yes.
+
+40. Is JSON language dependent?
+
+No.
+
+Automation Architecture Questions
+41. How do you validate contract in APIs?
+
+Using JSON schema validation.
+
+42. What is contract testing?
+
+Ensuring API response matches agreed schema.
+
+43. How do you version JSON schemas?
+
+Store schema files separately by API version.
+
+44. How do you handle backward compatibility?
+
+Validate old and new schema compatibility.
+
+45. How do you test huge JSON payload performance?
+
+Measure response time and parsing time.
+
+Project-Based Questions
+46. How are you using JSON in your current project?
+
+In my project, I use JSON for:
+
+Request payload
+Response validation
+Test data
+Config
+Token extraction
+47. How do you create test data using JSON?
+
+Store multiple test records in JSON arrays.
+
+48. How do you read nested JSON from file?
+
+Using Jackson or Gson parser.
+
+49. How do you compare expected vs actual response?
+
+Use JSONAssert or custom recursive comparison.
+
+50. What best practices do you follow for JSON validation?
+Validate schema
+Validate business fields
+Ignore dynamic values
+Use reusable utilities
+Use POJO for complex structures
