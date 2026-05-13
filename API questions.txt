@@ -1,0 +1,67 @@
+API interview questions
+
+write answer for all
+Basic JSON Questions
+What is JSON?
+What does JSON stand for?
+What are the supported data types in JSON?
+What is the difference between JSON and XML?
+What is the difference between JSON and JavaScript object?
+Is JSON case-sensitive?
+Can JSON support comments?
+What is the difference between null and empty string in JSON?
+What are key-value pairs in JSON?
+Can a JSON file have duplicate keys?
+Structure-Based Questions
+What is a nested JSON object?
+What is a JSON array?
+Difference between JSON object and JSON array?
+How do you access nested JSON values?
+How do you handle dynamic values in JSON response?
+How to parse JSON in Java?
+How to convert JSON string to object?
+How to convert object to JSON string?
+What is serialization and deserialization in JSON?
+What is pretty print JSON?
+
+Example of nested JSON:
+
+{
+  "employee": {
+    "name": "Shrinivas",
+    "skills": ["Java", "Playwright", "API"]
+  }
+}
+API Testing Related JSON Questions
+How do you validate JSON response in API automation?
+How do you extract value from JSON response using Rest Assured?
+How do you verify status code and JSON body together?
+What is JSONPath?
+Difference between JSONPath and XPath?
+How do you validate nested arrays in JSON response?
+How do you handle large JSON responses?
+What is schema validation in JSON?
+What is JSON schema?
+How do you validate mandatory fields in JSON?
+Java + Automation Framework Questions
+How do you create POJO class from JSON?
+What is Jackson library?
+What is Gson library?
+Difference between Jackson and Gson?
+How do you map JSON response to POJO class?
+What is ObjectMapper in Jackson?
+How do you read JSON from external file in framework?
+How do you pass JSON payload in POST request?
+How do you modify JSON dynamically in tests?
+How do you compare two JSON responses?
+Scenario-Based Interview Questions
+API response contains 500 fields — how will you validate?
+If one key is missing in JSON response, how will you handle?
+How do you validate array size in response?
+If response structure changes frequently, how will you design framework?
+How do you validate specific user details from response?
+How do you handle optional fields in JSON?
+What if JSON response has null values?
+How do you extract token from login response JSON?
+How do you send nested JSON payload in POST API?
+How do you validate response against expected JSON file?
