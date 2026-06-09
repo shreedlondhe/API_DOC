@@ -45,7 +45,7 @@ void toGetAllCookies(){
         Headers headers = re.getHeaders();
     }
     @Test
-    void toGetSingleHeader(){
+    void toGetSingleHeader1(){
         Response re = given()
                 .when()
                 .get("https://api.restful-api.dev/objects")
@@ -57,6 +57,18 @@ void toGetAllCookies(){
             System.out.println("Key: " + header.getName() +
                     " Value: " + header.getValue());
         }
+    }
+    @Test
+    void toGetSingleHeader2(){
+        HashMap<String,String>map=new HashMap<>();
+        map.put("Content-Type","application/json");
+        map.put("x-api-key","reqres_149dc9238d4c43c68292b18d4214e98b");
+        Response re=RestAssured.given().headers(map).
+                when().get("https://reqres.in/api/users/").then().statusCode(200).log().all()
+                .extract().response();
+        System.out.println(re.getHeader("X-Frame-Options"));
+
+        
     }
 
 }
