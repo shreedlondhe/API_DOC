@@ -19,6 +19,31 @@ public class SchemaVlidation {
 //    <artifactId>json-schema-validator</artifactId>
 //    <version>5.3.0</version>
 //</dependency>
+    // scema format
+//     {
+//   "$schema": "http://json-schema.org/draft-07/schema#",
+//   "type": "object",
+//   "properties": {
+//     "id": {
+//       "type": "integer"
+//     },
+//     "name": {
+//       "type": "string"
+//     },
+//     "email": {
+//       "type": "string"
+//     },
+//     "active": {
+//       "type": "boolean"
+//     }
+//   },
+//   "required": [
+//     "id",
+//     "name",
+//     "email",
+//     "active"
+//   ]
+// }
 
     @Test(enabled = false)
 void validateScheme(){
